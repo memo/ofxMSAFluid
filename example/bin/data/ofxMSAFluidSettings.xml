@@ -9,15 +9,15 @@
     </Button_resizeFluid>
     <SliderFloat_colorMult>
         <name>colorMult</name>
-        <value>91.500000000</value>
+        <value>98.500000000</value>
     </SliderFloat_colorMult>
     <SliderFloat_velocityMult>
         <name>velocityMult</name>
-        <value>38.500000000</value>
+        <value>18.500000000</value>
     </SliderFloat_velocityMult>
     <SliderFloat_fs.viscocity>
         <name>fs.viscocity</name>
-        <value>0.000120000</value>
+        <value>0.000100000</value>
     </SliderFloat_fs.viscocity>
     <SliderFloat_fs.colorDiffusion>
         <name>fs.colorDiffusion</name>
@@ -25,15 +25,15 @@
     </SliderFloat_fs.colorDiffusion>
     <SliderFloat_fs.fadeSpeed>
         <name>fs.fadeSpeed</name>
-        <value>0.002000001</value>
+        <value>0.005000000</value>
     </SliderFloat_fs.fadeSpeed>
     <SliderInt_fs.solverIterations>
         <name>fs.solverIterations</name>
-        <value>10</value>
+        <value>15</value>
     </SliderInt_fs.solverIterations>
     <SliderFloat_fs.deltaT>
         <name>fs.deltaT</name>
-        <value>0.884000003</value>
+        <value>1.251500010</value>
     </SliderFloat_fs.deltaT>
     <ComboBox_fd.drawMode>
         <name>fd.drawMode</name>
