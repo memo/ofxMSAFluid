@@ -323,7 +323,7 @@ namespace msa {
             for (int j=0; j<fh-2; j+=vectorSkipCount+1 ){
                 for (int i=0; i<fw-2; i+=vectorSkipCount+1 ){
                     vel = _fluidSolver->getVelocityAtCell(i+1, j+1);
-                    float d2 = vel.squareLength();
+                    float d2 = vel.lengthSquared();
                     if(d2>vt) {
                         if(d2 > maxVel * maxVel) {
                             float mult = maxVel * maxVel/ d2;
