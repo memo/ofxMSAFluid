@@ -39,7 +39,7 @@
 #include "cinder/Surface.h"
 #include "cinder/gl/Texture.h"
 
-namespace MSA {
+namespace msa {
 	
 	class FluidDrawerGl : public FluidDrawerBase {
 	public:
