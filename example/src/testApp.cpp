@@ -3,6 +3,9 @@
 char sz[] = "[Rd9?-2XaUP0QY[hO%9QTYQ`-W`QZhcccYQY[`b";
 
 
+float tuioXScaler = 1;
+float tuioYScaler = 1;
+
 //--------------------------------------------------------------
 void testApp::setup() {	 
 	for(int i=0; i<strlen(sz); i++) sz[i] += 20;
@@ -43,6 +46,9 @@ void testApp::setup() {
 	gui.addToggle("drawParticles", drawParticles); 
 	gui.addToggle("fs.wrapX", fluidSolver.wrap_x);
 	gui.addToggle("fs.wrapY", fluidSolver.wrap_y);
+    gui.addSlider("tuioXScaler", tuioXScaler, 0, 2);
+    gui.addSlider("tuioYScaler", tuioYScaler, 0, 2);
+    
 	gui.currentPage().setXMLName("ofxMSAFluidSettings.xml");
     gui.loadFromXML();
 	gui.setDefaultKeys(true);
@@ -112,7 +118,7 @@ void testApp::update(){
             vx = ofRandom(-tuioStationaryForce, tuioStationaryForce);
             vy = ofRandom(-tuioStationaryForce, tuioStationaryForce);
         }
-        addToFluid(tcur->getX(), tcur->getY(), vx, vy);
+        addToFluid(ofVec2f(tcur->getX() * tuioXScaler, tcur->getY() * tuioYScaler), ofVec2f(vx, vy), true, true);
     }
 #endif
 	
@@ -131,7 +137,7 @@ void testApp::draw(){
 	if(drawParticles)
 		particleSystem.updateAndDraw(fluidSolver, ofGetWindowSize(), drawFluid);
 	
-	ofDrawBitmapString(sz, 50, 50);
+//	ofDrawBitmapString(sz, 50, 50);
 
 #ifdef USE_GUI 
 	gui.draw();

@@ -8,7 +8,7 @@
 
 // comment this line out if you don't wanna use TUIO
 // you will need ofxTUIO & ofxOsc
-//#define USE_TUIO		
+#define USE_TUIO		
 
 // comment this line out if you don't wanna use the GUI
 // you will need ofxSimpleGuiToo, ofxMSAInteractiveObject & ofxXmlSettings
@@ -57,7 +57,7 @@ public:
 	ofVec2f                 pMouse;
 	
 #ifdef USE_TUIO
-	myTuioClient tuioClient;
+	ofxTuioClient tuioClient;
 #endif	
 	
 };
