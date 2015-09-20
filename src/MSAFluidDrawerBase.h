@@ -50,16 +50,16 @@ namespace msa {
             
             void update();
             
-            void draw(float x = 0, float y = 0);
-            void draw(float x, float y, float renderWidth, float renderHeight);				// this one does chooses one of the below based on drawmode
-            void drawColor(float x, float y, float renderWidth, float renderHeight, bool withAlpha = false);
-            void drawMotion(float x, float y, float renderWidth, float renderHeight, bool withAlpha = false);
-            void drawSpeed(float x, float y, float renderWidth, float renderHeight, bool withAlpha = false);
-            void drawVectors(float x, float y, float renderWidth, float renderHeight);
+            void draw(float x, float y) const override;
+            void draw(float x, float y, float renderWidth, float renderHeight) const override;				// this one does chooses one of the below based on drawmode
+            void drawColor(float x, float y, float renderWidth, float renderHeight, bool withAlpha = false) const;
+            void drawMotion(float x, float y, float renderWidth, float renderHeight, bool withAlpha = false) const;
+            void drawSpeed(float x, float y, float renderWidth, float renderHeight, bool withAlpha = false) const;
+            void drawVectors(float x, float y, float renderWidth, float renderHeight) const;
             void reset();
             
-            virtual float getWidth() = 0;
-            virtual float getHeight() = 0;
+           // float getWidth() const override {}
+            //float getHeight() const override {}
             
             void setDrawMode(DrawMode newDrawMode);
             void incDrawMode();
@@ -80,9 +80,9 @@ namespace msa {
             void				allocatePixels();
             
             virtual void		createTexture() = 0;									// override to create a texture
-            virtual void		updateTexture() = 0;									// override to update the texture from the pixels array
+            virtual void		updateTexture() const = 0;									// override to update the texture from the pixels array
             virtual void		deleteTexture() = 0;									// override to delete the texture
-            virtual void		drawTexture(float x, float y, float w, float h) = 0;	// override to draw texture
+            virtual void		drawTexture(float x, float y, float w, float h) const = 0;	// override to draw texture
             
             void				deleteFluidSolver();
             bool				isFluidReady();

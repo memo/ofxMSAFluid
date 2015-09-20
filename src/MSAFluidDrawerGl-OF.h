@@ -13,11 +13,11 @@ namespace msa {
         
         class DrawerGl : public DrawerBase {
         public:
-            float getWidth() {
+            float getWidth() const override {
                 return tex.getWidth();
             }
             
-            float getHeight() {
+            float getHeight() const override {
                 return tex.getHeight();
             }
             
@@ -27,24 +27,24 @@ namespace msa {
             
             
         protected:
-            ofTexture			tex;
+            mutable ofTexture			tex;
             
-            void createTexture() {
+            void createTexture() override {
                 int texWidth = _fluidSolver->getWidth()-2;
                 int texHeight =_fluidSolver->getHeight()-2;
                 tex.allocate(texWidth, texHeight, _glType);
             }
             
             
-            void updateTexture() {
+            void updateTexture() const override {
                 tex.loadData(_pixels, (int)tex.getWidth(), (int)tex.getHeight(), _glType);
             }
             
-            void deleteTexture() {
+            void deleteTexture() override {
                 tex.clear();
             }
             
-            void drawTexture(float x, float y, float w, float h) {
+            void drawTexture(float x, float y, float w, float h) const override {
                 tex.draw(x, y, w, h);
             }		
         };

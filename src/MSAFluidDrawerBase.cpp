@@ -150,7 +150,7 @@ namespace msa {
         
         
         //--------------------------------------------------------------
-        void DrawerBase::draw(float x, float y) {
+        void DrawerBase::draw(float x, float y) const {
             if(enabled == false) return;
             
             draw(x, y, getWindowWidth(), getWindowHeight());
@@ -158,7 +158,7 @@ namespace msa {
         
         
         //--------------------------------------------------------------
-        void DrawerBase::draw(float x, float y, float renderWidth, float renderHeight) {
+        void DrawerBase::draw(float x, float y, float renderWidth, float renderHeight) const {
             if(enabled == false) return;
             
             switch(drawMode) {
@@ -178,12 +178,15 @@ namespace msa {
                     drawVectors(x, y, renderWidth, renderHeight);
                     break;
                     
+                default:
+                    break;
+                    
             }
         }
         
         
         //--------------------------------------------------------------
-        void DrawerBase::drawColor(float x, float y, float renderWidth, float renderHeight, bool withAlpha) {
+        void DrawerBase::drawColor(float x, float y, float renderWidth, float renderHeight, bool withAlpha) const {
             if(enabled == false) return;
             
             if(useAdditiveBlending) {
@@ -225,7 +228,7 @@ namespace msa {
         
         
         //--------------------------------------------------------------
-        void DrawerBase::drawMotion(float x, float y, float renderWidth, float renderHeight, bool withAlpha) {
+        void DrawerBase::drawMotion(float x, float y, float renderWidth, float renderHeight, bool withAlpha) const {
             if(enabled == false) return;
             
             if(useAdditiveBlending) {
@@ -260,7 +263,7 @@ namespace msa {
         
         
         //--------------------------------------------------------------
-        void DrawerBase::drawSpeed(float x, float y, float renderWidth, float renderHeight, bool withAlpha) {
+        void DrawerBase::drawSpeed(float x, float y, float renderWidth, float renderHeight, bool withAlpha) const {
             if(enabled == false) return;
             
             if(useAdditiveBlending) {
@@ -294,7 +297,7 @@ namespace msa {
         
         
         //--------------------------------------------------------------
-        void DrawerBase::drawVectors(float x, float y, float renderWidth, float renderHeight) {
+        void DrawerBase::drawVectors(float x, float y, float renderWidth, float renderHeight)  const {
             if(enabled == false) return;
             
             int fw = _fluidSolver->getWidth();
