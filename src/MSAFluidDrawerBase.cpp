@@ -189,13 +189,10 @@ namespace msa {
         void DrawerBase::drawColor(float x, float y, float renderWidth, float renderHeight, bool withAlpha) const {
             if(enabled == false) return;
             
-            if(useAdditiveBlending) {
-                glBlendFunc(GL_ONE, GL_ONE);
-                glEnable(GL_BLEND);
-            } else {
-                glDisable(GL_BLEND);
-            }
-            
+            ofPushStyle();
+            if(useAdditiveBlending) ofEnableBlendMode(OF_BLENDMODE_ADD);
+            else ofDisableAlphaBlending();
+
             int fw = _fluidSolver->getWidth();
             int fh = _fluidSolver->getHeight();
             
@@ -223,6 +220,7 @@ namespace msa {
             
             updateTexture();
             drawTexture(x, y, renderWidth, renderHeight);
+            ofPopStyle();
         }
         
         
@@ -231,12 +229,9 @@ namespace msa {
         void DrawerBase::drawMotion(float x, float y, float renderWidth, float renderHeight, bool withAlpha) const {
             if(enabled == false) return;
             
-            if(useAdditiveBlending) {
-                glBlendFunc(GL_ONE, GL_ONE);
-                glEnable(GL_BLEND);
-            } else {
-                glDisable(GL_BLEND);
-            }
+            ofPushStyle();
+            if(useAdditiveBlending) ofEnableBlendMode(OF_BLENDMODE_ADD);
+            else ofDisableAlphaBlending();
             
             int fw = _fluidSolver->getWidth();
             int fh = _fluidSolver->getHeight();
@@ -259,6 +254,7 @@ namespace msa {
             
             updateTexture();
             drawTexture(x, y, renderWidth, renderHeight);
+            ofPopStyle();
         }
         
         
@@ -266,12 +262,9 @@ namespace msa {
         void DrawerBase::drawSpeed(float x, float y, float renderWidth, float renderHeight, bool withAlpha) const {
             if(enabled == false) return;
             
-            if(useAdditiveBlending) {
-                glBlendFunc(GL_ONE, GL_ONE);
-                glEnable(GL_BLEND);
-            } else {
-                glDisable(GL_BLEND);
-            }
+            ofPushStyle();
+            if(useAdditiveBlending) ofEnableBlendMode(OF_BLENDMODE_ADD);
+            else ofDisableAlphaBlending();
             
             int fw = _fluidSolver->getWidth();
             int fh = _fluidSolver->getHeight();
@@ -293,6 +286,7 @@ namespace msa {
             
             updateTexture();
             drawTexture(x, y, renderWidth, renderHeight);
+            ofPopStyle();
         }
         
         
@@ -300,22 +294,19 @@ namespace msa {
         void DrawerBase::drawVectors(float x, float y, float renderWidth, float renderHeight)  const {
             if(enabled == false) return;
             
+            ofPushStyle();
+            if(useAdditiveBlending) ofEnableBlendMode(OF_BLENDMODE_ADD);
+            else ofDisableAlphaBlending();
+
             int fw = _fluidSolver->getWidth();
             int fh = _fluidSolver->getHeight();
-            
-            if(useAdditiveBlending) {
-                glBlendFunc(GL_ONE, GL_ONE);
-                glEnable(GL_BLEND);
-            } else {
-                glDisable(GL_BLEND);
-            }
-            
+
             //	int xStep = renderWidth / 10;		// every 10 pixels
             //	int yStep = renderHeight / 10;		// every 10 pixels
             
-            glPushMatrix();
-            glTranslatef(x, y, 0);
-            glScalef(renderWidth/(fw-2), renderHeight/(fh-2), 1.0);
+            ofPushMatrix();
+            ofTranslate(x, y, 0);
+            ofScale(renderWidth/(fw-2), renderHeight/(fh-2), 1.0);
             
             float maxVel = 5.0f/20000;
             
@@ -335,22 +326,20 @@ namespace msa {
                             vel.y *= mult;
                         }
                         vel *= velDrawMult * 50000;
-                        
-#ifndef TARGET_OPENGLES
                         float b = mapRange(d2, vt, maxVel, 0.0f, brightness);
-                        b = brightness;
-                        glColor3f(b, b, b);
-                        
-                        glBegin(GL_LINES);
-                        glVertex2f(i, j);
-                        glVertex2f(i + vel.x, j + vel.y);
-                        glEnd();
-#endif
+                        b = brightness*255;
+//                        ofBeginShape();
+//                        ofSetColor(0, 0, 0);
+//                        ofVertex(i, j);
+                        ofSetColor(b, b, b);
+                        ofDrawLine(i, j, i + vel.x, j + vel.y);
+//                        ofVertex(i + vel.x, j + vel.y);
+//                        ofEndShape();
                     }
                 }
             }
-            glPopMatrix();
-            
+            ofPopMatrix();
+            ofPopStyle();
         }
         
         
