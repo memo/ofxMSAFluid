@@ -1,14 +1,12 @@
 #include "testApp.h"
 
-char sz[] = "[Rd9?-2XaUP0QY[hO%9QTYQ`-W`QZhcccYQY[`b";
-
 
 float tuioXScaler = 1;
 float tuioYScaler = 1;
 
 //--------------------------------------------------------------
 void testApp::setup() {	 
-	for(int i=0; i<strlen(sz); i++) sz[i] += 20;
+	//for(int i=0; i<strlen(sz); i++) sz[i] += 20;
 	
 	// setup fluid stuff
 	fluidSolver.setup(100, 100);
@@ -44,6 +42,11 @@ void testApp::setup() {
 	gui.addToggle("fs.doVorticityConfinement", fluidSolver.doVorticityConfinement); 
 	gui.addToggle("drawFluid", drawFluid); 
 	gui.addToggle("drawParticles", drawParticles); 
+	gui.addSlider("velDrawMult", fluidDrawer.velDrawMult, 0.0, 20);
+	gui.addSlider("velDrawThreshold", fluidDrawer.velDrawThreshold, 0.0, 1);
+	gui.addSlider("brightness", fluidDrawer.brightness, 0.0, 2);
+	gui.addToggle("useAdditiveBlending", fluidDrawer.useAdditiveBlending);
+	
 	gui.addToggle("fs.wrapX", fluidSolver.wrap_x);
 	gui.addToggle("fs.wrapY", fluidSolver.wrap_y);
     gui.addSlider("tuioXScaler", tuioXScaler, 0, 2);

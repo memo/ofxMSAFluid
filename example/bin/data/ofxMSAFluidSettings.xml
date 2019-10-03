@@ -1,7 +1,7 @@
 <controls>
     <SliderInt_fluidCellsX>
         <name>fluidCellsX</name>
-        <value>120</value>
+        <value>177</value>
     </SliderInt_fluidCellsX>
     <Button_resizeFluid>
         <name>resizeFluid</name>
@@ -9,15 +9,15 @@
     </Button_resizeFluid>
     <SliderFloat_colorMult>
         <name>colorMult</name>
-        <value>98.500000000</value>
+        <value>100.000000000</value>
     </SliderFloat_colorMult>
     <SliderFloat_velocityMult>
         <name>velocityMult</name>
-        <value>18.500000000</value>
+        <value>24.000000000</value>
     </SliderFloat_velocityMult>
     <SliderFloat_fs.viscocity>
         <name>fs.viscocity</name>
-        <value>0.000100000</value>
+        <value>0.000010000</value>
     </SliderFloat_fs.viscocity>
     <SliderFloat_fs.colorDiffusion>
         <name>fs.colorDiffusion</name>
@@ -33,15 +33,15 @@
     </SliderInt_fs.solverIterations>
     <SliderFloat_fs.deltaT>
         <name>fs.deltaT</name>
-        <value>1.251500010</value>
+        <value>0.590000033</value>
     </SliderFloat_fs.deltaT>
     <ComboBox_fd.drawMode>
         <name>fd.drawMode</name>
-        <value>0</value>
+        <value>2</value>
     </ComboBox_fd.drawMode>
     <Toggle_fs.doRGB>
         <name>fs.doRGB</name>
-        <value>1</value>
+        <value>0</value>
     </Toggle_fs.doRGB>
     <Toggle_fs.doVorticityConfinement>
         <name>fs.doVorticityConfinement</name>
@@ -49,12 +49,28 @@
     </Toggle_fs.doVorticityConfinement>
     <Toggle_drawFluid>
         <name>drawFluid</name>
-        <value>1</value>
+        <value>0</value>
     </Toggle_drawFluid>
     <Toggle_drawParticles>
         <name>drawParticles</name>
         <value>1</value>
     </Toggle_drawParticles>
+    <SliderFloat_velDrawMult>
+        <name>velDrawMult</name>
+        <value>1.000000000</value>
+    </SliderFloat_velDrawMult>
+    <SliderFloat_velDrawThreshold>
+        <name>velDrawThreshold</name>
+        <value>0.000000000</value>
+    </SliderFloat_velDrawThreshold>
+    <SliderFloat_brightness>
+        <name>brightness</name>
+        <value>0.059999999</value>
+    </SliderFloat_brightness>
+    <Toggle_useAdditiveBlending>
+        <name>useAdditiveBlending</name>
+        <value>1</value>
+    </Toggle_useAdditiveBlending>
     <Toggle_fs.wrapX>
         <name>fs.wrapX</name>
         <value>0</value>
@@ -63,4 +79,12 @@
         <name>fs.wrapY</name>
         <value>0</value>
     </Toggle_fs.wrapY>
+    <SliderFloat_tuioXScaler>
+        <name>tuioXScaler</name>
+        <value>1.000000000</value>
+    </SliderFloat_tuioXScaler>
+    <SliderFloat_tuioYScaler>
+        <name>tuioYScaler</name>
+        <value>1.000000000</value>
+    </SliderFloat_tuioYScaler>
 </controls>

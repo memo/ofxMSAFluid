@@ -29,6 +29,39 @@
 
 class testApp : public ofBaseApp {
 public:
+
+
+
+	float                   colorMult;
+	float                   velocityMult;
+	int                     fluidCellsX;
+	bool                    resizeFluid;
+	bool                    drawFluid;
+	bool                    drawParticles;
+
+	// TODO
+	struct {
+		int count;
+		struct Disturber {
+			ofVec2f pos;
+			ofVec2f vel;
+			float amp;
+		};
+		float noiseAmp;
+		float noiseFreq;
+		bool draw;
+		vector<Disturber> forces;
+	} randForce;
+
+	msa::fluid::Solver      fluidSolver;
+	msa::fluid::DrawerGl	fluidDrawer;
+
+	ParticleSystem          particleSystem;
+
+	ofVec2f                 pMouse;
+
+	float vectorLength;
+
 	void setup();
 	void update();
 	void draw();
@@ -40,27 +73,9 @@ public:
 	void fadeToColor(float r, float g, float b, float speed);
 	void addToFluid(ofVec2f pos, ofVec2f vel, bool addColor, bool addForce);
 
-    
-    
-    float                   colorMult;
-    float                   velocityMult;
-	int                     fluidCellsX;
-	bool                    resizeFluid;
-	bool                    drawFluid;
-	bool                    drawParticles;
-	
-	msa::fluid::Solver      fluidSolver;
-	msa::fluid::DrawerGl	fluidDrawer;
-	
-	ParticleSystem          particleSystem;
-	
-	ofVec2f                 pMouse;
 	
 #ifdef USE_TUIO
 	ofxTuioClient tuioClient;
 #endif	
 	
 };
-
-
-
