@@ -1,2 +1,5 @@
+ofxMSACore
 ofxMSAFluid
+ofxMSAInteractiveObject
 ofxSimpleGuiToo
+ofxXmlSettings
