@@ -1,87 +1,209 @@
-# Some general ignore patterns
+#########################
+# openFrameworks patterns
+#########################
 
-*/bin/*
-!*/bin/data/
-# for bin folder in root
-/bin/*
-!/bin/data/
+# build files
+openFrameworks.a
+openFrameworksDebug.a
+openFrameworksUniversal.a
+libs/openFrameworksCompiled/lib/*/*
+!libs/openFrameworksCompiled/lib/*/.gitkeep
 
-build/
-obj/
+# apothecary
+scripts/apothecary
+
+# rule to avoid non-official addons going into git
+# see addons/.gitignore
+addons/*
+
+# rule to avoid non-official apps going into git
+# see apps/.gitignore
+apps/*
+
+# rule to ignore compiled / downloaded libs
+/libs/*
+!/libs/openFrameworks
+!/libs/openFrameworksCompiled
+
+# also, see examples/.gitignore
+
+#########################
+# general
+#########################
+
+[Bb]uild/
+[Oo]bj/
 *.o
-Debug*/
-Release*/
+examples/**/[Dd]ebug*/
+examples/**/[Rr]elease*/
+examples/**/gcc-debug/
+examples/**/gcc-release/
+tests/**/[Dd]ebug*/
+tests/**/[Rr]elease*/
+tests/**/gcc-debug/
+tests/**/gcc-release/
 *.mode*
 *.app/
 *.pyc
 .svn/
+*.log
+*.cpp.eep
+*.cpp.elf
+*.cpp.hex
 
-# IDE-specific ignore patterns (e.g. user-specific files)
+#########################
+# IDE
+#########################
 
-#XCode
+# XCode
 *.pbxuser
 *.perspective
 *.perspectivev3
 *.mode1v3
 *.mode2v3
-#XCode 4
+# XCode 4
 xcuserdata
 *.xcworkspace
 
-#Code::Blocks
+# Code::Blocks
 *.depend
 *.layout
-*.cbTemp
 
-#Visual Studio
+# Visual Studio
 *.sdf
 *.opensdf
 *.suo
+*.pdb
+*.ilk
+*.aps
 ipch/
+**/.vs/*
 
-#Eclipse
+# Eclipse
 .metadata
 local.properties
 .externalToolBuilders
 
-# OS-specific ignore patterns
+# Android Studio
+.idea
+.gradle
+gradle
+gradlew
+gradlew.bat
 
-#Linux
+# QtCreator
+*.qbs.user
+*.pro.user
+*.pri
+
+
+#########################
+# operating system
+#########################
+
+# Linux
 *~
 # KDE
 .directory
+.AppleDouble
 
-#OSX
+# OSX
 .DS_Store
 *.swp
 *~.nib
 # Thumbnails
 ._*
+examples/ios/**/mediaAssets
 
-#Windows
+# Windows
 # Windows image file caches
 Thumbs.db
 # Folder config file
 Desktop.ini
 
-#Android
+# Android
 .csettings
+/libs/openFrameworksCompiled/project/android/paths.make
 
-# Packages
-# it's better to unpack these files and commit the raw source
-# git has its own built in compression methods
-*.7z
-*.dmg
-*.gz
-*.iso
-*.jar
-*.rar
-*.tar
-*.zip
+# Android Studio
+*.iml
 
-# Logs and databases
-*.log
-*.sql
-*.sqlite
-*.qbs.user
-*.bg
+#########################
+# miscellaneous
+#########################
+
+.mailmap
+/apps*/
+
+#########################
+# core examples
+#########################
+
+bin/*
+!bin/data/
+
+**/bin/*
+!**/bin/data/
+
+#########################
+# IDE
+#########################
+
+# XCode
+*.xcodeproj
+Project.xcconfig
+openFrameworks-Info.plist
+ofxiOS-Info.plist
+ofxiOS_Prefix.pch
+*/*/Default*.png
+*/*/Icon*.png
+
+# Code::Blocks
+# *.cbp
+# *.workspace
+
+# Visual Studio
+# *.sln
+# *.vcxproj
+*.vcxproj.user
+*.vcxproj.filters
+icon.rc
+
+# Eclipse
+.cproject
+.project
+.settings/
+
+# QtCreator
+# *.qbs
+*.qbs.user*
+*.pro
+*.pro.user
+qtc_Desktop_*
+
+#########################
+# operating system
+#########################
+
+# Linux
+# Makefile
+# config.make
+# Leave Android files in until project generation works
+!/android/*/Makefile
+!/android/*/config.make
+
+# Android
+android/*/test link
+android/*/gen
+android/*/res/raw
+libOFAndroidApp*.so
+gdbserver
+gdb.setup
+libneondetection.so
+Application.mk
+Android.mk
+
+!android/*/.cproject
+!android/*/.project
+!android/*/.settings
+!android/*/.settings/*
