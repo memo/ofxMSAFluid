@@ -313,10 +313,11 @@ namespace msa {
             Vec2f vel;
             float vt = velDrawThreshold * _fluidSolver->getInvWidth() * _fluidSolver->getInvHeight();
             vt *= vt;
-            
+			ofMesh mesh;
             for (int j=0; j<fh-2; j+=vectorSkipCount+1 ){
                 for (int i=0; i<fw-2; i+=vectorSkipCount+1 ){
-                    vel = _fluidSolver->getVelocityAtCell(i+1, j+1);
+					ofVec2f pos(i, j);
+					vel = _fluidSolver->getVelocityAtCell(i+1, j+1);
                     float d2 = vel.lengthSquared();
                     if(d2>vt) {
                         if(d2 > maxVel * maxVel) {
@@ -328,16 +329,30 @@ namespace msa {
                         vel *= velDrawMult * 50000;
                         float b = mapRange(d2, vt, maxVel, 0.0f, brightness);
                         b = brightness*255;
-//                        ofBeginShape();
-//                        ofSetColor(0, 0, 0);
-//                        ofVertex(i, j);
-                        ofSetColor(b, b, b);
-                        ofDrawLine(i, j, i + vel.x, j + vel.y);
-//                        ofVertex(i + vel.x, j + vel.y);
-//                        ofEndShape();
-                    }
+						mesh.addColor(ofColor::black);
+						mesh.addVertex(ofVec3f(pos));
+
+						mesh.addColor(ofColor(b, b, b));
+						mesh.addVertex(ofVec3f(pos + vel));
+
+						//ofSetColor(b, b, b);
+						//ofDrawLine(i, j, i + vel.x, j + vel.y);
+
+						//ofSetPolyMode(OF_POLY_WINDING_POSITIVE);
+						//ofNoFill();
+						//ofBeginShape();
+						//ofSetColor(0, 0, 0);
+						//ofVertex(i, j);
+						//ofSetColor(b, b, b);
+						//ofVertex(i + vel.x, j + vel.y);
+						//ofEndShape();
+
+
+					}
                 }
             }
+			mesh.setMode(OF_PRIMITIVE_LINES);
+			mesh.drawWireframe();
             ofPopMatrix();
             ofPopStyle();
         }
